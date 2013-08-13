@@ -80,7 +80,7 @@ def sms_exec(modem, message):
     output = cmd_exec.read()
     syslog.syslog('Sending the output back to %s output: %s' % (textback_num, output))
     modem.send_text(textback_num, output)
-    modem.sms_del(0)
+    modem.sms_del(msg_num)
 
 
 websocket.enableTrace(False)
