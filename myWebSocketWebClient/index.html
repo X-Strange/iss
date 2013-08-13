@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<!-- If Google's chrome frame installed, use it! -->
+
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Xarrio Websocket Plugin - Web Client</title>
+<script type="text/javascript" src="js/jWebSocket.js"></script>
+<script type="text/javascript" src="js_code.js"></script>
+<script type="text/javascript" src="XarriosClientPlugin.js"></script>
+<script>
+function eraseText() {
+    document.getElementById("sms").value = "";
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Xarrio WebSocket Client</title>
+</head>
+<body onload="initPage();">
+		<input id="inputNumber" type="number"></input>
+		<button type="button" onclick="requestResult();">calculate</button>
+		<br/>
+		<button type="button" onclick="websocketClient.requestAuthorName();">Author</button>
+		<br/>
+		<input id="slider" type="range" min="0" max="100" step="1" onCHange="sliderHasChanged();"/>
+		<br/>
+		<p><a href="http://xarrios.blogspot.com">http://xarrios.blogspot.com</a></p>
+		<button type="button" onclick="websocketClient.left();">Left</button>
+		<br/>
+		<button type="button" onclick="websocketClient.right();">Right</button>
+		<br/>
+		<button type="button" onclick="websocketClient.position();">Get Position</button>
+		<br/>
+		<input id="cel" type="text">Ingrese el numero sin 0 ni 15</input>
+		<br/>
+		<textarea class="FormElement" id="sms" style="width: 200px; height: 40px;"></textarea>
+		<br/>
+		<button type="button" onclick="websocketClient.message(document.getElementById('sms').value, document.getElementById('cel').value);javascript:eraseText();">Send</button>
+		<br/>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SecuritySystem</string>
+    <string name="image">Amarino Image</string>
+    <string name="device">Set Device ID</string>
+    <string name="pass">Set Password</string>
+    <string name="passfield">Enter your password</string>
+    <string name="deviceField">Device ID</string>
+    <string name="listen_to_me">Leeme</string>
+    <string name="speak_to_me">Speak To Me</string>
+    <string name="left">Motor rotated left</string>
+    <string name="right">Motor rotated right</string>
+    <string name="kazoo">Kazuu</string>
+    <string name="position">Position sent</string>
+</resources>

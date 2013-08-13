@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#cdcdcd"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/passfield" >
+    </EditText>
+
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pass" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="listenToMe"
+        android:text="@string/listen_to_me"
+        android:visibility="gone" >
+    </Button>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="speakToMe"
+        android:text="@string/speak_to_me" >
+    </Button>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Control Manual" 
+        android:onClick="manual_usb"/>
+  
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver camaras" 
+        android:onClick="viewCam"/>
+    
+    <Button
+        android:id="@+id/btnLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Girar Izquierda" 
+        android:onClick="turnLeft"/>
+    
+    <Button
+        android:id="@+id/btnRight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Girar Derecha" 
+        android:onClick="turnRight"/>
+    
+    <Button
+        android:id="@+id/btnZumbador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kazoo" 
+        android:onClick="getKazoo"/>
+
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000" >
+    </TextView>
+</LinearLayout>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified"
+        elementFormDefault="qualified" version="1.0"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="jWebSocket">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="installation" type="xsd:string" />
+				<xsd:element name="protocol" type="xsd:string" />
+				<xsd:element name="logging">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="log4j">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="appender" type="xsd:string" />
+										<xsd:element name="pattern" type="xsd:string" />
+										<xsd:element name="level" type="xsd:string" />
+										<xsd:element name="filename" type="xsd:string" />
+										<xsd:element name="buffered" type="xsd:boolean" />
+										<xsd:element name="buffersize" type="xsd:int" />
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="initializerClass" type="xsd:string" />
+				<xsd:element name="engines">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="engine">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="name" type="xsd:string" />
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="jar" type="xsd:string" />
+										<xsd:element name="port" type="xsd:int" />
+										<xsd:element name="domains">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element maxOccurs="unbounded" name="domain"
+                                                    type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="timeout" type="xsd:int" />
+										<xsd:element name="maxframesize" type="xsd:int" />
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="servers">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="server">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="name" type="xsd:string" />
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="jar" type="xsd:string" />
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="rights">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="right">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="ns" type="xsd:string" />
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="description" type="xsd:string" />
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="roles">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="role">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="description" type="xsd:string" />
+										<xsd:element name="rights">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element maxOccurs="unbounded" name="right"
+                                                    type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="plugins">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="plugin">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="name" type="xsd:string" />
+										<xsd:element name="ns" type="xsd:string" />
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="jar" type="xsd:string" />
+										<xsd:element name="settings">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element maxOccurs="unbounded" name="setting">
+														<xsd:complexType>
+															<xsd:attribute name="key" type="xsd:string" />
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="server-assignments">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="server-assignment" type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="filters">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="filter">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="name" type="xsd:string" />
+										<xsd:element name="ns" type="xsd:string" />
+										<xsd:element name="id" type="xsd:string" />
+										<xsd:element name="jar" type="xsd:string" />
+										<xsd:element name="settings">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="setting">
+														<xsd:complexType>
+															<xsd:attribute name="key" type="xsd:string" />
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="server-assignments">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="server-assignment" type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="users">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" name="user">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="loginname" type="xsd:string" />
+										<xsd:element name="firstname" type="xsd:string" />
+										<xsd:element name="lastname" type="xsd:string" />
+										<xsd:element name="password" type="xsd:string" />
+										<xsd:element name="description" type="xsd:string" />
+										<xsd:element name="status" type="xsd:int" />
+										<xsd:element name="roles">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element maxOccurs="unbounded" name="role"
+                                                    type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

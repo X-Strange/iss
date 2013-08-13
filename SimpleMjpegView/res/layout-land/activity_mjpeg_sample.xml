@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="horizontal" >
+
+    <com.camera.simplemjpeg.MjpegView
+        android:id="@+id/surfaceView1"
+        android:layout_width="325dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+    
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:text="&lt;" 
+            android:onClick="turnLeft">
+		</Button>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=">" 
+            android:onClick="turnRight">
+
+		</Button>
+    </LinearLayout>
+
+    <com.camera.simplemjpeg.MjpegView
+        android:id="@+id/surfaceView2"
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

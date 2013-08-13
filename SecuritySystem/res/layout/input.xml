@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+	android:background="#000000"
+	>
+
+	<EditText android:id="@+id/deviceIDField" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:hint="@string/deviceField" 
+			>
+	</EditText> 
+	
+	 <Button  
+		android:id="@+id/okButton"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/device"
+    />
+	 
+	 <Button  
+		android:id="@+id/wifiButton"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="Remote" 
+	    android:onClick="openRemote"/>
+
+	 <CheckBox
+	     android:id="@+id/checkSSH"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:text="SSH Tunnel" />
+	 
+<ImageView   
+  android:contentDescription="@string/image"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_gravity="center"
+  android:background="#fff"
+  android:src="@drawable/amarino"/>
+
+</LinearLayout>
