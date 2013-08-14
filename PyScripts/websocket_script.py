@@ -59,6 +59,7 @@ def sms_exec(modem, message):
     # Stripping message header and \r\n trailer.
     msg_num = int(message[12:].strip())
     command = modem.read_message(msg_num)
+    command.lower()
     for msg_header in modem.list_messages():
         if msg_header[0] == msg_num:
             textback_num = msg_header[2]
