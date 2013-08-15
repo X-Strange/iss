@@ -64,9 +64,8 @@ def sms_exec(modem, message):
             textback_num = msg_header[2]
             break
     syslog.syslog('Executing %r' % command)
-    if 'clima' in command:
-        commands = command.split()
-        commands.lower()
+    commands = command.split()
+    if 'clima' in commands[0].lower:
         if len(commands) == 3:
             cmd_exec = os.popen(
                 "python /home/pi/PyScripts/clima.py " + commands[1] + " " + commands[2])
