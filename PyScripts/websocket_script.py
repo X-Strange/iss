@@ -49,7 +49,7 @@ def on_close(ws):
 def on_open(ws):
     sms_action = (humod.actions.PATTERN['new sms'], sms_exec)
     actions = [sms_action]
-    MODEM.enter_text_mode()
+    MODEM.enable_textmode(True)
     MODEM.enable_nmi(True)
     MODEM.prober.start(actions)
 
