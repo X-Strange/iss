@@ -64,7 +64,7 @@ def sms_exec(modem, message):
             textback_num = msg_header[2]
             break
     syslog.syslog('Executing %r' % command)
-    if 'clima' in command.lower:
+    if 'clima' in command:
         commands = command.split()
         commands.lower()
         if len(commands) == 3:
