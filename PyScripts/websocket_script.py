@@ -67,7 +67,7 @@ def sms_exec(modem, message):
     commands = command.split()
     application = commands[0]
     application.lower()
-    if 'clima' in application:
+    if 'clima' == application:
         if len(commands) == 3:
             cmd_exec = os.popen(
                 "python /home/pi/PyScripts/clima.py " + commands[1] + " " + commands[2])
