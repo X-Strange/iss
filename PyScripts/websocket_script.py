@@ -58,9 +58,9 @@ def sms_exec(modem, message):
     """Execute a shell command from an text message."""
     # Stripping message header and \r\n trailer.
     msg_num = int(message[12:].strip())
-    command = modem.read_message(msg_num)
+    command = modem.sms_read(msg_num)
     command.lower()
-    for msg_header in modem.list_messages():
+    for msg_header in modem.sms_list():
         if msg_header[0] == msg_num:
             textback_num = msg_header[2]
             break
@@ -80,7 +80,7 @@ def sms_exec(modem, message):
         cmd_exec = os.popen(command)
     output = cmd_exec.read()
     syslog.syslog('Sending the output back to %s output: %s' % (textback_num, output))
-    modem.send_text(textback_num, output)
+    modem.sms_send(textback_num, output)
     modem.sms_del(msg_num)
 
 
