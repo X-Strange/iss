@@ -59,13 +59,12 @@ def sms_exec(modem, message):
     # Stripping message header and \r\n trailer.
     msg_num = int(message[12:].strip())
     command = modem.sms_read(msg_num)
-    command.lower()
     for msg_header in modem.sms_list():
         if msg_header[0] == msg_num:
             textback_num = msg_header[2]
             break
     syslog.syslog('Executing %r' % command)
-    if 'clima' in command:
+    if 'clima' in command.lower:
         commands = command.split()
         commands.lower()
         if len(commands) == 3:
