@@ -99,8 +99,8 @@ public class MjpegActivity extends Activity {
 
         }
         if(mv2 != null){
-            new DoRead2().execute("http://xarrio.dyndns.org/cgi-bin/nph-zms?mode=jpeg&monitor=3&scale=100&maxfps=20&buffer=1000&connkey=854555&rand=1351614160");
-            //new DoRead2().execute("http://xarrio.dyndns.org:8082");
+            //new DoRead2().execute("http://xarrio.dyndns.org/cgi-bin/nph-zms?mode=jpeg&monitor=3&scale=100&maxfps=20&buffer=1000&connkey=854555&rand=1351614160");
+            new DoRead2().execute("http://xarrio.dyndns.org:8083");
         }
     }
 
@@ -322,7 +322,7 @@ public class MjpegActivity extends Activity {
     public void wsConnect(int value) {
     	
 	    try {
-	        URI url = new URI("ws://localhost:8787/myWebSocketWebClient");
+	        URI url = new URI("ws://xarrio.dyndns.org:8787");
 	        websocket = new WebSocketConnection(url);
 	        
 	        // Register Event Handlers
