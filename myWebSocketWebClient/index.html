@@ -6,6 +6,7 @@
 
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <title>Xarrio Websocket Plugin - Web Client</title>
 <script type="text/javascript" src="js/jWebSocket.js"></script>
 <script type="text/javascript" src="js_code.js"></script>
@@ -15,21 +16,17 @@ function eraseText() {
     document.getElementById("sms").value = "";
 }
 </script>
+<script type="text/javascript"
+src="https://sdk.librato.com/librato-sdk-v0.3.0-min.js"
+data-librato_email="xstrange.tharos@gmail.com"
+data-librato_token="110a586159c641d4bf54a775ed804c603a4157230c0c2d616872eaf85c87d7f1">
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Xarrio WebSocket Client</title>
 </head>
 <body onload="initPage();">
-		<input id="inputNumber" type="number"></input>
-		<button type="button" onclick="requestResult();">calculate</button>
-		<br/>
+		<input id="inputNumber" type="hidden"></input>
 		<button type="button" onclick="websocketClient.requestAuthorName();">Author</button>
-		<br/>
-		<input id="slider" type="range" min="0" max="100" step="1" onCHange="sliderHasChanged();"/>
-		<br/>
-		<p><a href="http://xarrios.blogspot.com">http://xarrios.blogspot.com</a></p>
-		<button type="button" onclick="websocketClient.left();">Left</button>
-		<br/>
-		<button type="button" onclick="websocketClient.right();">Right</button>
 		<br/>
 		<button type="button" onclick="websocketClient.position();">Get Position</button>
 		<br/>
@@ -39,5 +36,18 @@ function eraseText() {
 		<br/>
 		<button type="button" onclick="websocketClient.message(document.getElementById('sms').value, document.getElementById('cel').value);javascript:eraseText();">Send</button>
 		<br/>
+		<button type="button" onclick="websocketClient.left();">Left</button>
+		<button type="button" onclick="websocketClient.right();">Right</button>
+		<br/>
+		 <applet code=com.charliemouse.cambozola.Viewer
+    archive=cambozola.jar width="640" height="480" style="border-width:1; border-color:gray; border-style:solid;"> <param name=url value="http://xarrio.dyndns.org:8081"> </applet> 
+		<applet code=com.charliemouse.cambozola.Viewer
+    archive=cambozola.jar width="640" height="480" style="border-width:1; border-color:gray; border-style:solid;"> <param name=url value="http://xarrio.dyndns.org:8083"> </applet>
+		<br/>
+		<applet code=com.charliemouse.cambozola.Viewer
+    archive=cambozola.jar width="352" height="288" style="border-width:1; border-color:gray; border-style:solid;"> <param name=url value="http://xarrio.dyndns.org:8082"> </applet>
+<div class="librato-metrics" data-instrument_id="12592057" style="height: 200px; width: 400px;"></div>
+</br>
+<div class="librato-metrics" data-instrument_id="12592125" style="height: 200px; width: 400px;"></div>
 </body>
 </html>
