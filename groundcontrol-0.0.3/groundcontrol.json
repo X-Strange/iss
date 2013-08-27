@@ -1,0 +1,34 @@
+
+{
+
+  "temperature" : "/sys/class/thermal/thermal_zone0/temp",
+
+  "port": 4571,
+
+  "host": "0.0.0.0",
+
+  "stdout" : false,
+
+  "interval" : 30,
+
+  "history_interval": 60,
+  "history_backlog": 20,
+
+ "librato":{
+   "user": "xstrange.tharos@gmail.com",
+   "key": "110a586159c641d4bf54a775ed804c603a4157230c0c2d616872eaf85c87d7f1"
+  },
+  "controls" : {
+     "Motion": {
+       "start": "sudo /etc/init.d/motion start",
+       "stop": "sudo /etc/init.d/motion stop"
+     },
+     "Restart Python": {
+        "start script": "python /home/pi/PyScripts/websocket_script.py &",
+	"restart script": "killall python && python /home/pi/PyScripts/websocket_script.py &"
+     },
+     "Restart": {
+      "once" : "sudo reboot"
+     }
+  }
+}
