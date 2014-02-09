@@ -19,16 +19,24 @@
    "key": "110a586159c641d4bf54a775ed804c603a4157230c0c2d616872eaf85c87d7f1"
   },
   "controls" : {
+     "DarkIce": {
+       "start": "sudo darkice",
+       "stop": "killall darkice"
+     },
      "Motion": {
        "start": "sudo /etc/init.d/motion start",
        "stop": "sudo /etc/init.d/motion stop"
      },
-     "Restart Python": {
-        "start script": "python /home/pi/PyScripts/websocket_script.py &",
-	"restart script": "killall python && python /home/pi/PyScripts/websocket_script.py &"
+     "Websockets": {
+	"start": "sh /home/pi/jWebSocket-1.0/bin/jWebSocketStart.sh &",
+	"stop": "killall java"
      },
-     "Restart": {
-      "once" : "sudo reboot"
+     "Python": {
+        "start": "python /home/pi/PyScripts/websocket_script.py &",
+	"stop": "killall python"
+     },
+     "Poweroff": {
+      "start" : "sudo poweroff"
      }
   }
 }
