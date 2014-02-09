@@ -1,0 +1,4 @@
+Temperatura actual en Cordoba: 40 grados
+Estado del tiempo: Despejado
+Humedad: 8%
+Visibilidad: 6.0 km
