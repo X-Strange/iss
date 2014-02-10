@@ -2,10 +2,14 @@
 //#include <MeetAndroid.h>
 #include <SoftwareSerial.h>
 #include <MeetAndroidSS.h>
+#include <Servo.h>
 
 // declare MeetAndroid so that you can call functions with it
 //MeetAndroid meetAndroid;
 MeetAndroidSS meetAndroid(9600, 12, 11);
+
+Servo miServo;
+int angulo=90;
 
 int lock = 13;          
 int LED=9; //pin 9 on Arduino
@@ -49,6 +53,8 @@ void setup()
    meetAndroid.registerFunction(getIMEI, 'd');
    meetAndroid.registerFunction(playNotas, 'n');
    meetAndroid.registerFunction(controlMotor, 'm');
+   
+   miServo.attach(10);
    
    Serial.begin(115200);
    pinMode(LED, OUTPUT);
@@ -110,7 +116,17 @@ void loop()
         digitalWrite(LED, LOW);
         Serial.print("Kazoo is off\n");
       }
+      
+      if(strcmp(command,"x") == 0 ) {
+        angulo+=10;//incrementamos 10
+      } else if(strcmp(command,"z") == 0) { 
+        angulo-=10;//decrementamos 10
+      }
+      angulo=constrain(angulo,0,180);//restringimos el valor de 0 a 180
   } 
+  miServo.write(angulo);  
+  Serial.print("Angulo:");Serial.println(angulo);
+  delay(100);
 }
 
 void execute(byte flag, byte numOfValues)
