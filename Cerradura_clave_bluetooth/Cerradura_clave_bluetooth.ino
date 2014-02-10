@@ -49,6 +49,7 @@ void setup()
    
    //Serial.begin(9600);
    digitalWrite(lock, LOW);  //By default, lock is active(locked)
+   meetAndroid.registerFunction(controlServo, 's');
    meetAndroid.registerFunction(execute, 'p');
    meetAndroid.registerFunction(getIMEI, 'd');
    meetAndroid.registerFunction(playNotas, 'n');
@@ -116,17 +117,7 @@ void loop()
         digitalWrite(LED, LOW);
         Serial.print("Kazoo is off\n");
       }
-      
-      if(strcmp(command,"x") == 0 ) {
-        angulo+=10;//incrementamos 10
-      } else if(strcmp(command,"z") == 0) { 
-        angulo-=10;//decrementamos 10
-      }
-      angulo=constrain(angulo,0,180);//restringimos el valor de 0 a 180
   } 
-  miServo.write(angulo);  
-  Serial.print("Angulo:");Serial.println(angulo);
-  delay(100);
 }
 
 void execute(byte flag, byte numOfValues)
@@ -226,6 +217,26 @@ void playNotas(byte flag, byte numOfValues)
 		}
 	delay(pausa); //tiempo en silencio entre escalas
   }
+}
+
+void controlServo(byte flag, byte numOfValues)
+{
+  int length = meetAndroid.stringLength();
+  char data[length];
+  meetAndroid.getString(data);
+  if (data[0] == 'z') {
+    angulo+=20;//incrementamos 20
+    meetAndroid.send("Servo izquierda");
+  } else if (data[0] == 'x') {
+    angulo-=20;//decrementamos 20
+    meetAndroid.send("Servo derecha");
+  } else if (data[0] == 'c') {
+    angulo=90;
+    meetAndroid.send("Servo centrado");
+  }
+  angulo=constrain(angulo,0,180);//restringimos el valor de 0 a 180
+  miServo.write(angulo);
+  delay(100);
 }
 
 void controlMotor(byte flag, byte numOfValues)
