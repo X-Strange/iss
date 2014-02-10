@@ -116,7 +116,19 @@ void loop()
         delay(5000);
         digitalWrite(LED, LOW);
         Serial.print("Kazoo is off\n");
+      } else if (strcmp(command, "z") == 0) {
+        angulo+=20;
+        Serial.print("Servo rotated left\n");
+      } else if (strcmp(command, "x") == 0) {
+        angulo-=20;
+        Serial.print("Servo rotated right\n");
+      } else if (strcmp(command, "c") == 0) {
+        angulo=90;
+        Serial.print("Servo centered\n");
       }
+      angulo=constrain(angulo,0,180);//restringimos el valor de 0 a 180
+      miServo.write(angulo);
+      delay(100);
   } 
 }
 
