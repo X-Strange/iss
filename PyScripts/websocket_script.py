@@ -4,18 +4,21 @@ import json
 import os
 import humod
 import syslog
+import serial
+import time
 
 
-MODEM = humod.Modem()
+#MODEM = humod.Modem()
+arduino = serial.Serial('/dev/ttyUSB0', 115200)
 actions = None
 
 
 def on_message(ws, message):
+    #import pdb; pdb.set_trace()
     syslog.syslog(message)
     j = json.loads(message)
-    print j['reqType']
-    print j['value']
-    print j['value2']
+    print "type: " + j['reqType']
+    print "value: " + j['value']
     if j['reqType'] == "message":
         MODEM.enable_nmi(False)
         MODEM.prober.stop()
@@ -28,6 +31,15 @@ def on_message(ws, message):
         actions = [sms_action]
         MODEM.enable_nmi(True)
         MODEM.prober.start(actions)
+    elif j['reqType'] == "servoRight":
+        arduino.write(j['value'])
+        time.sleep(2)
+    elif j['reqType'] == "servoLeft":
+        arduino.write(j['value'])
+        time.sleep(2)
+    elif j['reqType'] == "servoCenter":
+        arduino.write(j['value'])
+        time.sleep(2)
 
 
 def on_error(ws, error):
