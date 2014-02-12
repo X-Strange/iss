@@ -132,6 +132,8 @@ public class SecuritySystem extends Activity implements android.view.View.OnClic
 					Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 'n', toSend);
 				} else if (toSend.contains("0") || toSend.contains("1") || toSend.contains("2")) {
 					Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 'm', toSend);
+				} else if (toSend.contains("z") || toSend.contains("x") || toSend.contains("c")) {
+					Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 's', toSend);
 				} else {
 					Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 'p', toSend);
 				}
@@ -243,6 +245,12 @@ public class SecuritySystem extends Activity implements android.view.View.OnClic
            		firstMatch = "1";
             } else if (firstMatch.contains("right")) {
            		firstMatch = "2";
+            } else if (firstMatch.contains("izquierda")) {
+           		firstMatch = "z";
+            } else if (firstMatch.contains("derecha")) {
+           		firstMatch = "x";
+            } else if (firstMatch.contains("centro")) {
+           		firstMatch = "c";
             } 
             textView.setText(firstMatch);
             this.onClick(this.activity.getCurrentFocus());
@@ -275,6 +283,30 @@ public class SecuritySystem extends Activity implements android.view.View.OnClic
     		wsx.sendData("right", "2");
     	} else {
     		Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 'm', 2);
+    	}
+    }
+    
+    public void turnServoRight(View v) {
+    	if (connected) {
+    		wsx.sendData("servoRight", "x");
+    	} else {
+    		Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 's', 'x');
+    	}
+    }
+    
+    public void turnServoLeft(View v) {
+    	if (connected) {
+    		wsx.sendData("servoLeft", "z");
+    	} else {
+    		Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 's', 'z');
+    	}
+    }
+    
+    public void turnServoCenter(View v) {
+    	if (connected) {
+    		wsx.sendData("servoCenter", "c");
+    	} else {
+    		Amarino.sendDataToArduino(this, SecuritySystemInterface.DEVICE_ADDRESS, 's', 'c');
     	}
     }
     

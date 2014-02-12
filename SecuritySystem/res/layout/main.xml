@@ -13,12 +13,6 @@
     </EditText>
 
     <Button
-        android:id="@+id/sendButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pass" />
-
-    <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,49 +21,121 @@
         android:visibility="gone" >
     </Button>
 
-    <Button
-        android:id="@+id/button2"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="speakToMe"
-        android:text="@string/speak_to_me" >
-    </Button>
+        android:layout_height="match_parent"
+        android:showDividers="middle" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Control Manual" 
-        android:onClick="manual_usb"/>
-  
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver camaras" 
-        android:onClick="viewCam"/>
-    
-    <Button
-        android:id="@+id/btnLeft"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Girar Izquierda" 
-        android:onClick="turnLeft"/>
-    
-    <Button
-        android:id="@+id/btnRight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Girar Derecha" 
-        android:onClick="turnRight"/>
-    
-    <Button
-        android:id="@+id/btnZumbador"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kazoo" 
-        android:onClick="getKazoo"/>
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
 
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pass" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="speakToMe"
+                android:text="@string/speak_to_me" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="manual_usb"
+                android:text="Control Manual" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="viewCam"
+                android:text="Ver camaras" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/btnLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="turnLeft"
+                android:text="Girar Izquierda" />
+
+            <Button
+                android:id="@+id/btnRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="turnRight"
+                android:text="Girar Derecha" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/btnZumbador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getKazoo"
+                android:text="Kazoo" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/btnServoRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="turnServoRight"
+                android:text="Servo Right" />
+
+            <Button
+                android:id="@+id/btnServoLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="turnServoLeft"
+                android:text="Servo Left" />
+
+            <Button
+                android:id="@+id/btnServoCenter"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:text="Center" 
+                android:onClick="turnServoCenter"/>
+
+        </TableRow>
+
+    </TableLayout>
     
     <TextView
         android:id="@+id/textView1"
