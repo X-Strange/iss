@@ -33,7 +33,7 @@ import android.view.View.OnTouchListener;
 import android.widget.Button;
 
 public class MjpegActivity extends Activity {
-	private static final boolean DEBUG=false;
+    private static final boolean DEBUG=false;
     private static final String TAG = "MJPEG";
 
     private MjpegView mv = null;
@@ -59,9 +59,9 @@ public class MjpegActivity extends Activity {
     
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		StrictMode.ThreadPolicy policy = new StrictMode.
-				ThreadPolicy.Builder().permitAll().build();
-				StrictMode.setThreadPolicy(policy);
+        StrictMode.ThreadPolicy policy = new StrictMode.
+                ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
         SharedPreferences preferences = getSharedPreferences("SAVED_VALUES", MODE_PRIVATE);
         width = preferences.getInt("width", width);
         height = preferences.getInt("height", height);
@@ -95,24 +95,24 @@ public class MjpegActivity extends Activity {
         mv = (MjpegView) findViewById(R.id.surfaceView1);
         mv2 = (MjpegView) findViewById(R.id.surfaceView2);
         if(mv != null){
-            new DoRead().execute("http://xarrio.dyndns.org:8081");
+            new DoRead().execute("http://tharoxnet.no-ip.org:8081");
 
         }
         if(mv2 != null){
             //new DoRead2().execute("http://xarrio.dyndns.org/cgi-bin/nph-zms?mode=jpeg&monitor=3&scale=100&maxfps=20&buffer=1000&connkey=854555&rand=1351614160");
-            new DoRead2().execute("http://xarrio.dyndns.org:8083");
+            new DoRead2().execute("http://tharoxnet.no-ip.org:8083");
         }
     }
 
     
     public void onResume() {
-    	if(DEBUG) Log.d(TAG,"onResume()");
+        if(DEBUG) Log.d(TAG,"onResume()");
         super.onResume();
         if(mv!=null){
-        	if(suspending){
-        		new DoRead().execute(URL);
-        		suspending = false;
-        	}
+            if(suspending){
+                new DoRead().execute(URL);
+                suspending = false;
+            }
         }
         if(mv2!=null){
             if(suspending){
@@ -124,17 +124,17 @@ public class MjpegActivity extends Activity {
     }
 
     public void onStart() {
-    	if(DEBUG) Log.d(TAG,"onStart()");
+        if(DEBUG) Log.d(TAG,"onStart()");
         super.onStart();
     }
     public void onPause() {
-    	if(DEBUG) Log.d(TAG,"onPause()");
+        if(DEBUG) Log.d(TAG,"onPause()");
         super.onPause();
         if(mv!=null){
-        	if(mv.isStreaming()){
-		        mv.stopPlayback();
-		        suspending = true;
-        	}
+            if(mv.isStreaming()){
+                mv.stopPlayback();
+                suspending = true;
+            }
         }
         if(mv2!=null){
             if(mv2.isStreaming()){
@@ -144,85 +144,85 @@ public class MjpegActivity extends Activity {
         }
     }
     public void onStop() {
-    	if(DEBUG) Log.d(TAG,"onStop()");
+        if(DEBUG) Log.d(TAG,"onStop()");
         super.onStop();
     }
 
     public void onDestroy() {
-    	if(DEBUG) Log.d(TAG,"onDestroy()");
-    	
-    	if(mv!=null){
-    		mv.freeCameraMemory();
-    	}
+        if(DEBUG) Log.d(TAG,"onDestroy()");
+        
+        if(mv!=null){
+            mv.freeCameraMemory();
+        }
         if(mv2!=null){
             mv2.freeCameraMemory();
         }
-    	
+        
         super.onDestroy();
     }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-    	MenuInflater inflater = getMenuInflater();
-    	inflater.inflate(R.layout.option_menu, menu);
-    	return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.layout.option_menu, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    	switch (item.getItemId()) {
-    		case R.id.settings:
-    			Intent settings_intent = new Intent(MjpegActivity.this, SettingsActivity.class);
-    			settings_intent.putExtra("width", width);
-    			settings_intent.putExtra("height", height);
-    			settings_intent.putExtra("ip_ad1", ip_ad1);
-    			settings_intent.putExtra("ip_ad2", ip_ad2);
-    			settings_intent.putExtra("ip_ad3", ip_ad3);
-    			settings_intent.putExtra("ip_ad4", ip_ad4);
-    			settings_intent.putExtra("ip_port", ip_port);
-    			settings_intent.putExtra("ip_command", ip_command);
-    			startActivityForResult(settings_intent, REQUEST_SETTINGS);
-    			return true;
-    	}
-    	return false;
+        switch (item.getItemId()) {
+            case R.id.settings:
+                Intent settings_intent = new Intent(MjpegActivity.this, SettingsActivity.class);
+                settings_intent.putExtra("width", width);
+                settings_intent.putExtra("height", height);
+                settings_intent.putExtra("ip_ad1", ip_ad1);
+                settings_intent.putExtra("ip_ad2", ip_ad2);
+                settings_intent.putExtra("ip_ad3", ip_ad3);
+                settings_intent.putExtra("ip_ad4", ip_ad4);
+                settings_intent.putExtra("ip_port", ip_port);
+                settings_intent.putExtra("ip_command", ip_command);
+                startActivityForResult(settings_intent, REQUEST_SETTINGS);
+                return true;
+        }
+        return false;
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	switch (requestCode) {
-    		case REQUEST_SETTINGS:
-    			if (resultCode == Activity.RESULT_OK) {
-    				width = data.getIntExtra("width", width);
-    				height = data.getIntExtra("height", height);
-    				ip_ad1 = data.getIntExtra("ip_ad1", ip_ad1);
-    				ip_ad2 = data.getIntExtra("ip_ad2", ip_ad2);
-    				ip_ad3 = data.getIntExtra("ip_ad3", ip_ad3);
-    				ip_ad4 = data.getIntExtra("ip_ad4", ip_ad4);
-    				ip_port = data.getIntExtra("ip_port", ip_port);
-    				ip_command = data.getStringExtra("ip_command");
+        switch (requestCode) {
+            case REQUEST_SETTINGS:
+                if (resultCode == Activity.RESULT_OK) {
+                    width = data.getIntExtra("width", width);
+                    height = data.getIntExtra("height", height);
+                    ip_ad1 = data.getIntExtra("ip_ad1", ip_ad1);
+                    ip_ad2 = data.getIntExtra("ip_ad2", ip_ad2);
+                    ip_ad3 = data.getIntExtra("ip_ad3", ip_ad3);
+                    ip_ad4 = data.getIntExtra("ip_ad4", ip_ad4);
+                    ip_port = data.getIntExtra("ip_port", ip_port);
+                    ip_command = data.getStringExtra("ip_command");
 
-    				if(mv!=null){
-    					mv.setResolution(352, 288);
-    				}
+                    if(mv!=null){
+                        mv.setResolution(352, 288);
+                    }
                     if(mv2!=null){
                         mv2.setResolution(352, 288);
                     }
-    				SharedPreferences preferences = getSharedPreferences("SAVED_VALUES", MODE_PRIVATE);
-    				SharedPreferences.Editor editor = preferences.edit();
-    				editor.putInt("width", width);
-    				editor.putInt("height", height);
-    				editor.putInt("ip_ad1", ip_ad1);
-    				editor.putInt("ip_ad2", ip_ad2);
-    				editor.putInt("ip_ad3", ip_ad3);
-    				editor.putInt("ip_ad4", ip_ad4);
-    				editor.putInt("ip_port", ip_port);
-    				editor.putString("ip_command", ip_command);
+                    SharedPreferences preferences = getSharedPreferences("SAVED_VALUES", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("width", width);
+                    editor.putInt("height", height);
+                    editor.putInt("ip_ad1", ip_ad1);
+                    editor.putInt("ip_ad2", ip_ad2);
+                    editor.putInt("ip_ad3", ip_ad3);
+                    editor.putInt("ip_ad4", ip_ad4);
+                    editor.putInt("ip_port", ip_port);
+                    editor.putString("ip_command", ip_command);
 
-    				editor.commit();
+                    editor.commit();
 
-    				new RestartApp().execute();
-    			}
-    			break;
-    	}
+                    new RestartApp().execute();
+                }
+                break;
+        }
     }
 
     
@@ -302,80 +302,80 @@ public class MjpegActivity extends Activity {
     
     public class RestartApp extends AsyncTask<Void, Void, Void> {
         protected Void doInBackground(Void... v) {
-			MjpegActivity.this.finish();
+            MjpegActivity.this.finish();
             return null;
         }
 
         protected void onPostExecute(Void v) {
-        	startActivity((new Intent(MjpegActivity.this, MjpegActivity.class)));
+            startActivity((new Intent(MjpegActivity.this, MjpegActivity.class)));
         }
     }
     
     public void turnLeft(View v) {
-    	wsConnect(2);
+        wsConnect(2);
     }
-	
+    
     public void turnRight(View v) {
-    	wsConnect(1);
+        wsConnect(1);
     }
     
     public void wsConnect(int value) {
-    	
-	    try {
-	        URI url = new URI("ws://xarrio.dyndns.org:8787");
-	        websocket = new WebSocketConnection(url);
-	        
-	        // Register Event Handlers
-	        websocket.setEventHandler(new WebSocketEventHandler()  {
-	                public void onOpen()
-	                {
-	                        System.out.println("--open");
-	                }
-	                                
-	                public void onMessage(WebSocketMessage message)
-	                {
-	                		System.out.println("--open");
-	                }
-	                                
-	                public void onClose()
-	                {
-	                        System.out.println("--close");
-	                }
-	        });
-	        
-	        // Establish WebSocket Connection
-	        websocket.connect();
-	        
-	        // Send UTF-8 Text
-	        websocket.send("test motor");
-	        
-	        // Close WebSocket Connection
-	        //websocket.close();
+        
+        try {
+            URI url = new URI("ws://xarrio.dyndns.org:8787");
+            websocket = new WebSocketConnection(url);
+            
+            // Register Event Handlers
+            websocket.setEventHandler(new WebSocketEventHandler()  {
+                    public void onOpen()
+                    {
+                            System.out.println("--open");
+                    }
+                                    
+                    public void onMessage(WebSocketMessage message)
+                    {
+                            System.out.println("--open");
+                    }
+                                    
+                    public void onClose()
+                    {
+                            System.out.println("--close");
+                    }
+            });
+            
+            // Establish WebSocket Connection
+            websocket.connect();
+            
+            // Send UTF-8 Text
+            websocket.send("test motor");
+            
+            // Close WebSocket Connection
+            //websocket.close();
 
-	        JSONObject out = new JSONObject();//create a new json Object
-        	try{
-        		out.put("ns", "org.xarrio.websocket.XarrioPlugin");//add the namespace
-        		if (value == 1) {
-        			out.put("type", "right");//add the event type
-        		} else if (value == 2) {
-        			out.put("type", "left");//add the event type
-        		}
-        		out.put("value", value);//add the value
-        		
-        	}catch(Exception e){
-        		Log.e("WebSocket fail", e.toString());//log error
-        	}
-        	try{
-        		websocket.send(out.toString());
-        	}catch(Exception e){
-        		Log.e("WebSocket fail to send", e.toString());//log error
-        	}
-		}
-		catch (WebSocketException wse) {
-		        wse.printStackTrace();
-		}
-		catch (URISyntaxException use) {
-		        use.printStackTrace();
-		}
+            JSONObject out = new JSONObject();//create a new json Object
+            try{
+                out.put("ns", "org.xarrio.websocket.XarrioPlugin");//add the namespace
+                if (value == 1) {
+                    out.put("type", "right");//add the event type
+                } else if (value == 2) {
+                    out.put("type", "left");//add the event type
+                }
+                out.put("value", value);//add the value
+                
+            }catch(Exception e){
+                Log.e("WebSocket fail", e.toString());//log error
+            }
+            try{
+                websocket.send(out.toString());
+            }catch(Exception e){
+                Log.e("WebSocket fail to send", e.toString());//log error
+            }
+        }
+        catch (WebSocketException wse) {
+                wse.printStackTrace();
+        }
+        catch (URISyntaxException use) {
+                use.printStackTrace();
+        }
     }
 }
